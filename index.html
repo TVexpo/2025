@@ -7,6 +7,14 @@
     <!-- 引入字體 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* 引入 Yozai-Light.ttf 字體 */
+        @font-face {
+            font-family: 'Yozai';
+            src: url('Yozai-Light.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -39,11 +47,28 @@
             animation-delay: 0.5s;
         }
 
+        /* 更新的文字樣式 */
+        .slogan {
+            font-family: 'Yozai', sans-serif;
+            font-size: 1.3em;
+            color: #000;
+            opacity: 0;
+            animation: fadeInSlogan 2s ease forwards;
+            animation-delay: 1s;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        /* 移除段落間的默認間距 */
+        .slogan p {
+            margin: 0;
+        }
+
         .countdown {
             font-family: 'Orbitron', sans-serif;
             color: #000;
             font-size: 2em;
-            margin-top: 20px;
+            margin-top: 200px; /* 增加這裡的數值來向下移動 */
             font-weight: bold;
             opacity: 0;
             animation: fadeInCountdown 2s ease forwards;
@@ -63,6 +88,12 @@
         }
 
         @keyframes fadeInLogo {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInSlogan {
             to {
                 opacity: 1;
             }
@@ -116,6 +147,12 @@
 <body>
     <div class="container">
         <img src="5.png" alt="2025 TVexpo Logo" class="logo">
+        <!-- 使用 <p> 標籤斷句換行 -->
+        <div class="slogan">
+            <p>首場專屬於台灣的Vtuber盛宴，虛實交融，夢境成真。</p>
+            <p>每位夥伴，都是社群的核心。</p>
+            <p>四月，TVexpo 2025，等你揭開次元之門。</p>
+        </div>
         <div class="countdown">Coming Soon<span class="dots"></span></div>
     </div>
     <!-- 喇叭圖標按鈕 -->
