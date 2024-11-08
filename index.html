@@ -7,14 +7,14 @@
     <!-- 引入字體 -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        /* 引入 Yozai-Light.ttc 字體 */
+        /* 引入自定義字體 */
         @font-face {
             font-family: 'Yozai-Light';
             src: url('Yozai-Light.ttc') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
-        
+
         body {
             margin: 0;
             padding: 0;
@@ -27,15 +27,45 @@
             background: linear-gradient(135deg, #FFB6C1 20%, #8A2BE2 80%);
             color: #fff;
             text-align: center;
+            overflow: hidden;
         }
-        
+
+        /* 遮罩效果 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            overflow: hidden;
+            transition: opacity 1s ease; /* 添加過渡效果 */
+        }
+
+        /* 按鈕效果 */
+        .start-button {
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 1s ease;
+        }
+        .start-button:hover {
+            transform: scale(1.1); /* 放大動畫 */
+        }
+
+        /* 頁面內容淡入設置，預設為不可見 */
+        .logo, .countdown {
+            opacity: 0;
+            transition: opacity 2s ease;
+        }
+
         .container {
             max-width: 90%;
             padding: 20px;
-            opacity: 0;
-            animation: fadeInContainer 2s ease forwards;
         }
-        
+
         .logo {
             max-width: 100%;
             height: auto;
@@ -43,140 +73,68 @@
             max-height: 60vh;
             object-fit: contain;
             margin-bottom: 20px;
-            opacity: 0;
-            animation: fadeInLogo 2s ease forwards;
-            animation-delay: 0.5s;
         }
-        
+
         /* 更新的文字樣式 */
         .slogan {
             font-family: 'Yozai-Light', sans-serif;
-            font-size: clamp(2em, 1.5vw, 2.5em);
+            font-size: clamp(1.5em, 1.5vw, 2.5em);
             color: #000;
             margin-bottom: 20px;
             line-height: 1.5;
         }
-        
-        /* 移除段落間的默認間距，並添加動畫 */
+
         .slogan p {
             margin: 0;
-            opacity: 0;
-            animation: fadeInSloganLine 2s ease forwards;
+            opacity: 0; /* 初始設置為不可見 */
+            transition: opacity 1s ease; /* 為每個 <p> 元素添加過渡效果 */
         }
-        
-        /* 針對每一行設置不同的動畫延遲 */
-        .slogan p:nth-child(1) {
-            animation-delay: 1s;
-        }
-        
-        .slogan p:nth-child(2) {
-            animation-delay: 1.5s;
-        }
-        
-        .slogan p:nth-child(3) {
-            animation-delay: 2.5s;
-        }
-        
-        @keyframes fadeInSloganLine {
-            to {
-                opacity: 1;
-            }
-        }
-        
+
         .countdown {
             font-family: 'Orbitron', sans-serif;
             color: #000;
-            font-size: clamp(1.5em, 2vw, 2em);
-            margin-top: 5vh; /* 調整為相對單位 */
-            font-weight: 900; /* 設置為最粗體 */
+            font-size: clamp(2em, 4vw, 3em); /* 增大字體大小 */
+            margin-top: 5vh;
+            font-weight: 900;
             opacity: 0;
-            animation: fadeInCountdown 2s ease forwards;
-            animation-delay: 4s; /* 調整延遲，確保在文字淡入後再出現 */
+            transition: opacity 2s ease;
         }
-        
+
         .dots::after {
             content: '';
             display: inline-block;
             animation: dots-animation 1.5s steps(3, end) infinite;
         }
-        
-        @keyframes fadeInContainer {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInLogo {
-            to {
-                opacity: 1;
-            }
-        }
-        
-        @keyframes fadeInCountdown {
-            to {
-                opacity: 1;
-            }
-        }
-        
+
+        /* dots動畫 */
         @keyframes dots-animation {
             0% { content: ''; }
             33% { content: '.'; }
             66% { content: '..'; }
             100% { content: '...'; }
         }
-        
-        /* 喇叭圖標樣式 */
-        #audioButton {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            padding: 15px;
-            cursor: pointer;
-            z-index: 1000;
-            opacity: 0;
-            animation: fadeInAudioButton 2s ease forwards;
-            animation-delay: 2s;
-        }
-        
-        #audioButton svg {
-            width: 24px;
-            height: 24px;
-            fill: #fff;
-        }
-        
-        #audioButton:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
-        
-        @keyframes fadeInAudioButton {
-            to {
-                opacity: 1;
-            }
-        }
-        
+
         /* 響應式設計 */
         @media (max-width: 600px) {
             .slogan {
-                font-size: clamp(0.9em, 3vw, 1.2em);
+                font-size: clamp(1em, 4vw, 1.5em);
             }
             .countdown {
-                font-size: clamp(1.5em, 5vw, 1.8em);
+                font-size: clamp(2em, 6vw, 2.5em); /* 在小螢幕上也增大字體 */
                 margin-top: 3vh;
-            }
-            #audioButton {
-                bottom: 10px;
-                right: 10px;
-                padding: 10px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- 遮罩 -->
+    <div class="overlay">
+        <img src="6.png" alt="Start Button" class="start-button">
+    </div>
+
+    <!-- 頁面內容 -->
     <div class="container">
         <img src="5.png" alt="2025 TVexpo Logo" class="logo">
-        <!-- 使用 <p> 標籤斷句換行 -->
         <div class="slogan">
             <p>台灣首場Vtuber盛宴，虛實交融，夢境成真。</p>
             <p>每位夥伴，都是我們珍視的來賓。</p>
@@ -184,39 +142,56 @@
         </div>
         <div class="countdown">Coming Soon<span class="dots"></span></div>
     </div>
-    <!-- 喇叭圖標按鈕 -->
-    <div id="audioButton">
-        <!-- 初始顯示為音量開圖標 -->
-        <svg id="volumeIcon" viewBox="0 0 24 24">
-            <!-- 音量開圖標的 SVG 路徑 -->
-            <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
-            <path d="M14 3.23v2.06c3.39 1 6 4.04 6 7.71s-2.61 6.71-6 7.71v2.06c4.73-1.07 8-5.28 8-9.77s-3.27-8.7-8-9.77z"></path>
-            <path d="M14 8.1v7.8c1.72-.91 2.9-2.69 2.9-3.9s-1.18-2.99-2.9-3.9z"></path>
-        </svg>
-    </div>
+
+    <!-- JavaScript 控制 -->
     <script>
-        const audioButton = document.getElementById('audioButton');
-        const volumeIcon = document.getElementById('volumeIcon');
-        let audio = new Audio('a.mp3');
+        // 初始化音樂
+        const audio = new Audio('a.mp3');
         audio.loop = true;
-        
-        audioButton.addEventListener('click', () => {
-            if (audio.paused) {
-                audio.play();
-                // 切換為音量開圖標
-                volumeIcon.innerHTML = `
-                <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
-                <path d="M14 3.23v2.06c3.39 1 6 4.04 6 7.71s-2.61 6.71-6 7.71v2.06c4.73-1.07 8-5.28 8-9.77s-3.27-8.7-8-9.77z"></path>
-                <path d="M14 8.1v7.8c1.72-.91 2.9-2.69 2.9-3.9s-1.18-2.99-2.9-3.9z"></path>
-            `;
-            } else {
-                audio.pause();
-                // 切換為靜音圖標
-                volumeIcon.innerHTML = `
-                    <path d="M16.5 12l4.5 4.5-1.41 1.41L15 13.41l-4.5 4.5-1.41-1.41L13.59 12 9.09 7.5l1.41-1.41L15 10.59l4.09-4.09 1.41 1.41L16.5 12z"></path>
-                    <path d="M3 9v6h4l5 5V4L7 9H3z"></path>
-                `;
-            }
+
+        // 選擇遮罩與按鈕
+        const overlay = document.querySelector('.overlay');
+        const startButton = document.querySelector('.start-button');
+        const logo = document.querySelector('.logo');
+        const sloganParagraphs = document.querySelectorAll('.slogan p');
+        const countdown = document.querySelector('.countdown');
+
+        startButton.addEventListener('click', () => {
+            // 播放音樂並設置淡入效果
+            audio.volume = 0;
+            audio.play();
+            let volumeInterval = setInterval(() => {
+                if (audio.volume < 1) {
+                    audio.volume += 0.05;
+                } else {
+                    clearInterval(volumeInterval);
+                }
+            }, 100);
+
+            // 淡出遮罩
+            overlay.style.opacity = '0';
+
+            // 在過渡效果結束後隱藏遮罩
+            setTimeout(() => {
+                overlay.style.display = 'none'; // 完全隱藏
+            }, 1000); // 與 CSS 過渡時間（1s）匹配
+
+            // 顯示主要內容並淡入
+            setTimeout(() => {
+                logo.style.opacity = 1;
+            }, 500); // logo 在0.5秒後開始淡入
+
+            // 依次淡入每個 <p> 元素
+            sloganParagraphs.forEach((p, index) => {
+                setTimeout(() => {
+                    p.style.opacity = 1;
+                }, 1500 + index * 800); // 第一句在1.5秒後開始，每句間隔0.8秒
+            });
+
+            // 在最後一句話淡入完成後顯示 countdown
+            setTimeout(() => {
+                countdown.style.opacity = 1;
+            }, 1500 + sloganParagraphs.length * 800 + 500);
         });
     </script>
 </body>
