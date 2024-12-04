@@ -1,198 +1,174 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025 TVexpo - Coming Soon</title>
-    <!-- 引入字體 -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        /* 引入自定義字體 */
-        @font-face {
-            font-family: 'Yozai-Light';
-            src: url('Yozai-Light.ttc') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Sans TC', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #FFB6C1 20%, #8A2BE2 80%);
-            color: #fff;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        /* 遮罩效果 */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* 半透明黑色背景 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            overflow: hidden;
-            transition: opacity 1s ease; /* 添加過渡效果 */
-        }
-
-        /* 按鈕效果 */
-        .start-button {
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 1s ease;
-        }
-        .start-button:hover {
-            transform: scale(1.1); /* 放大動畫 */
-        }
-
-        /* 頁面內容淡入設置，預設為不可見 */
-        .logo, .countdown {
-            opacity: 0;
-            transition: opacity 2s ease;
-        }
-
-        .container {
-            max-width: 90%;
-            padding: 20px;
-        }
-
-        .logo {
-            max-width: 100%;
-            height: auto;
-            width: auto;
-            max-height: 60vh;
-            object-fit: contain;
-            margin-bottom: 20px;
-        }
-
-        /* 更新的文字樣式 */
-        .slogan {
-            font-family: 'Yozai-Light', sans-serif;
-            font-size: clamp(1.5em, 1.5vw, 2.5em);
-            color: #000;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .slogan p {
-            margin: 0;
-            opacity: 0; /* 初始設置為不可見 */
-            transition: opacity 1s ease; /* 為每個 <p> 元素添加過渡效果 */
-        }
-
-        .countdown {
-            font-family: 'Orbitron', sans-serif;
-            color: #000;
-            font-size: clamp(2em, 4vw, 3em); /* 增大字體大小 */
-            margin-top: 5vh;
-            font-weight: 900;
-            opacity: 0;
-            transition: opacity 2s ease;
-        }
-
-        .dots::after {
-            content: '';
-            display: inline-block;
-            animation: dots-animation 1.5s steps(3, end) infinite;
-        }
-
-        /* dots動畫 */
-        @keyframes dots-animation {
-            0% { content: ''; }
-            33% { content: '.'; }
-            66% { content: '..'; }
-            100% { content: '...'; }
-        }
-
-        /* 響應式設計 */
-        @media (max-width: 600px) {
-            .slogan {
-                font-size: clamp(1em, 4vw, 1.5em);
-            }
-            .countdown {
-                font-size: clamp(2em, 6vw, 2.5em); /* 在小螢幕上也增大字體 */
-                margin-top: 3vh;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2025 TVexpo 官方參展說明</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #333;
+      color: #fff;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    nav {
+      background: #444;
+      padding: 10px 20px;
+      text-align: center;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+    }
+    nav ul li a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+    }
+    section {
+      margin-bottom: 30px;
+    }
+    section h2 {
+      color: #333;
+      border-bottom: 2px solid #f4f4f4;
+      padding-bottom: 5px;
+    }
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px 20px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    a.anchor {
+      display: block;
+      position: relative;
+      top: -60px;
+      visibility: hidden;
+    }
+  </style>
 </head>
 <body>
-    <!-- 遮罩 -->
-    <div class="overlay">
-        <img src="6.png" alt="Start Button" class="start-button">
-    </div>
-
-    <!-- 頁面內容 -->
-    <div class="container">
-        <img src="5.png" alt="2025 TVexpo Logo" class="logo">
-        <div class="slogan">
-            <p>台灣首場Vtuber盛宴虛實交融夢境成真</p>
-            <p>每位夥伴都是我們珍視的來賓</p>
-            <p>四月TVexpo 2025等你揭開次元之門</p>
-        </div>
-        <div class="countdown">Coming Soon<span class="dots"></span></div>
-    </div>
-
-    <!-- JavaScript 控制 -->
-    <script>
-        // 初始化音樂
-        const audio = new Audio('a.mp3');
-        audio.loop = true;
-
-        // 選擇遮罩與按鈕
-        const overlay = document.querySelector('.overlay');
-        const startButton = document.querySelector('.start-button');
-        const logo = document.querySelector('.logo');
-        const sloganParagraphs = document.querySelectorAll('.slogan p');
-        const countdown = document.querySelector('.countdown');
-
-        startButton.addEventListener('click', () => {
-            // 播放音樂並設置淡入效果
-            audio.volume = 0;
-            audio.play();
-            let volumeInterval = setInterval(() => {
-                if (audio.volume < 1) {
-                    audio.volume += 0.05;
-                } else {
-                    clearInterval(volumeInterval);
-                }
-            }, 100);
-
-            // 淡出遮罩
-            overlay.style.opacity = '0';
-
-            // 在過渡效果結束後隱藏遮罩
-            setTimeout(() => {
-                overlay.style.display = 'none'; // 完全隱藏
-            }, 1000); // 與 CSS 過渡時間（1s）匹配
-
-            // 顯示主要內容並淡入
-            setTimeout(() => {
-                logo.style.opacity = 1;
-            }, 500); // logo 在0.5秒後開始淡入
-
-            // 依次淡入每個 <p> 元素
-            sloganParagraphs.forEach((p, index) => {
-                setTimeout(() => {
-                    p.style.opacity = 1;
-                }, 1500 + index * 800); // 第一句在1.5秒後開始，每句間隔0.8秒
-            });
-
-            // 在最後一句話淡入完成後顯示 countdown
-            setTimeout(() => {
-                countdown.style.opacity = 1;
-            }, 1500 + sloganParagraphs.length * 800 + 500);
-        });
-    </script>
-</body>
-</html>
+  <header>
+    <h1>2025 TVexpo 官方參展說明</h1>
+    <p>提供完整的參展資訊與指南</p>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#basic-info">基本資訊</a></li>
+      <li><a href="#booth-planning">攤位規劃</a></li>
+      <li><a href="#event-schedule">活動安排</a></li>
+      <li><a href="#sales-guide">商品銷售</a></li>
+      <li><a href="#application-guide">參展申請</a></li>
+      <li><a href="#support">支援與資源</a></li>
+      <li><a href="#marketing">行銷與曝光</a></li>
+      <li><a href="#fan-interaction">粉絲互動</a></li>
+      <li><a href="#safety">安全與規範</a></li>
+      <li><a href="#follow-up">後續支持</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section id="basic-info">
+      <a class="anchor" id="basic-info"></a>
+      <h2>基本資訊</h2>
+      <p><strong>展覽名稱：</strong>2025 TVexpo</p>
+      <p><strong>日期：</strong>2025年4月12日 - 13日</p>
+      <p><strong>地點：</strong>台北市中山區玉門街一號（花博流行館）</p>
+      <p><strong>交通建議：</strong>捷運淡水信義線至圓山站下車，步行即可抵達。</p>
+      <p><strong>物流與配送：</strong>如需使用宅配服務，請將商品寄送至展覽場地，並確保於4月11日佈置日當天送達。</p>
+    </section>
+    <section id="booth-planning">
+      <a class="anchor" id="booth-planning"></a>
+      <h2>攤位規劃</h2>
+      <p><strong>標準攤位：</strong>2米 x 2米 x 2米，包含桌面、展示平台、2盞軌道LED燈、1至2個插座、Wi-Fi。</p>
+      <p><strong>Plus版攤位：</strong>2.6米 x 2米 x 2米，額外提供更多燈光（2至4盞軌道LED燈）與插座（3至4個），適合高端展示需求。</p>
+      <p><strong>個性化佈置：</strong>所有攤位均支持個性化設計，參展者可自備裝飾物，需符合安全規範。</p>
+      <p><strong>申請升級：</strong>需要額外空間或設備的參展者可申請升級攤位，截止日期為2025年1月15日。</p>
+      <p><strong>相關報名連結：</strong></p>
+    </section>
+    <section id="event-schedule">
+      <a class="anchor" id="event-schedule"></a>
+      <h2>活動安排</h2>
+      <p>我們鼓勵參展者準備現場互動與直播活動，例如粉絲提問、商品介紹、現場遊戲等。</p>
+      <p><strong>舞台活動：</strong>如需使用主辦方提供的舞台區，請提交具體申請，包括活動名稱、所需時長與設備需求。舞台活動時段將依需求與排程進行分配。</p>
+      <p><strong>直播設備支援：</strong>參展者需自備直播設備（需具備HDMI輸出功能），如需臨時設備，主辦方可提供迷你電腦借用，需提前申請。</p>
+    </section>
+    <section id="sales-guide">
+      <a class="anchor" id="sales-guide"></a>
+      <h2>商品銷售</h2>
+      <p><strong>販售商品：</strong>參展者可販售周邊商品，例如徽章、海報、掛件、服飾、畫冊等。如需販售食品，請確保商品為未開封包裝狀態，並符合食品安全法規。</p>
+      <p><strong>支付方式：</strong>主辦方提供刷卡機支援信用卡支付，手續費將依合作銀行標準收取，無需支付額外佣金。現金交易由參展者自行處理。</p>
+      <p><strong>電子支付：</strong>主辦方因法規限制無法提供LINE Pay服務，如有需求，參展者可自行申請商家帳號。</p>
+      <p><strong>建議事項：</strong>提前標明商品價格並提供多語言選項（如中文、英文），確保商品存放妥善並準備便攜式包裝，提升購物體驗。</p>
+    </section>
+    <section id="application-guide">
+      <a class="anchor" id="application-guide"></a>
+      <h2>參展申請</h2>
+      <p><strong>第一階段：</strong>主辦方將主動邀請參展者，包括企業勢與個人Vtuber，重點邀請活躍參與的創作者。</p>
+      <p><strong>第二階段：</strong>開放未受邀Vtuber報名參展，需提交參展申請表，內容包括參展者基本資料、角色簡介、主要活動平台、參展目標與預期展示內容。</p>
+      <p><strong>報名截止日期：</strong>2025年1月15日。</p>
+      <p><strong>合同與法律支援：</strong>主辦方提供參加展攤同意書，保障參展者與主辦方權益，內容涵蓋攤位使用規範、收益處理與安全責任。</p>
+      <p><strong>注意事項：</strong>建議參展者盡早準備所需資料，避免臨近截止日期造成壓力。</p>
+    </section>
+    <section id="support">
+      <a class="anchor" id="support"></a>
+      <h2>支援與資源</h2>
+      <p><strong>現場技術支援：</strong>主辦方在展覽期間提供技術團隊支援，協助解決現場直播、設備連接及其他技術問題。</p>
+      <p><strong>宣傳素材：</strong>報名確認後，參展者將於兩週內收到客製化的宣傳素材，包含社群平台分享圖、展示用圖片與官方宣傳文案。</p>
+      <p><strong>導覽手冊：</strong>活動前提供電子版展覽導覽手冊，包括場地地圖、活動時間表及注意事項，幫助參展者熟悉流程。</p>
+    </section>
+    <section id="marketing">
+      <a class="anchor" id="marketing"></a>
+      <h2>行銷與曝光</h2>
+      <p><strong>官網推廣：</strong>主辦方將在官方網站設置參展Vtuber專區，展示參展者的角色簡介與活動安排。</p>
+      <p><strong>社群平台曝光：</strong>利用主辦方的社群平台（如Twitter、Instagram、Facebook）進行同步推廣，吸引更多粉絲關注。</p>
+      <p><strong>現場介紹專區：</strong>展覽現場將設置專區展示所有參展Vtuber的資訊與亮點，提升曝光率。</p>
+    </section>
+    <section id="fan-interaction">
+      <a class="anchor" id="fan-interaction"></a>
+      <h2>粉絲互動</h2>
+      <p><strong>互動活動：</strong>參展者可在攤位前進行粉絲互動，例如簽名、合照、聊天或小型抽獎活動。</p>
+      <p><strong>排隊管理：</strong>主辦方將提供專業的排隊指引及場地規劃，確保粉絲活動安全有序。</p>
+      <p><strong>特別活動支援：</strong>如需安排大型見面會或特定活動，可提前聯繫主辦方獲取支援與建議。</p>
+    </section>
+    <section id="safety">
+      <a class="anchor" id="safety"></a>
+      <h2>安全與規範</h2>
+      <p><strong>安全設施：</strong>展場設有滅火器與緊急醫療站，主辦方將定期巡檢，確保現場安全。</p>
+      <p><strong>行為規範：</strong>參展者需遵守展覽規定，禁止使用明火或攜帶危險物品；粉絲需保持秩序，愛護場地設施。</p>
+      <p><strong>突發狀況處理：</strong>若發生緊急情況，請立即通知工作人員或聯繫現場管理人員。</p>
+    </section>
+    <section id="follow-up">
+      <a class="anchor" id="follow-up"></a>
+      <h2>後續支援</h2>
+      <p><strong>數據總結：</strong>展後主辦方將提供參展人數統計、粉絲回饋及其他有價值的展覽數據，幫助參展者了解活動成果。</p>
+      <p><strong>Discord 社群：</strong>參展者可加入專屬 Discord 伺服器，獲取後續活動資訊並與其他參展者交流。</p>
+      <p><strong>滿意度調查：</strong>主辦方將進行滿意度調查，參展者可提供建議以幫助改進未來展覽。</p>
+    </section>
+  </main>
+  <footer>
+    <p>聯絡方式：<a href="mailto:cs@tv-expo.com">cs@tv-expo.com</a> | 官方網站：<a href="https://www.tv-expo.com/">https://www.tv-expo.com/</a></p>
+    <p>&copy; 2025 TVexpo. All Rights Reserved.</p>
+  </footer>
