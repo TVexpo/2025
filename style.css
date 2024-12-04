@@ -1,12 +1,12 @@
-/* 定义常用的颜色变量 */
+/* 定義常用的顏色變數 */
 :root {
   --main-bg-color: rgba(0, 0, 0, 0.7);
   --text-color: white;
-  --button-bg-color: rgba(0, 0, 0, 0.5); /* 默认背景颜色 */
-  --button-hover-bg-color: rgba(255, 255, 255, 0.2); /* 鼠标悬停背景颜色 */
+  --button-bg-color: rgba(0, 0, 0, 0.5); /* 預設背景顏色 */
+  --button-hover-bg-color: rgba(255, 255, 255, 0.2); /* 滑鼠懸停背景顏色 */
 }
 
-/* 全局样式 */
+/* 全域樣式 */
 body {
   display: flex;
   flex-direction: column;
@@ -22,15 +22,15 @@ body {
   color: var(--text-color);
 }
 
-/* Logo 样式 */
+/* Logo 樣式 */
 .logo {
   display: block;
   margin: 10px auto;
   max-height: 128px; /* 控制 Logo 高度 */
-  height: auto; /* 自动调整高度，保持比例 */
+  height: auto; /* 自動調整高度，保持比例 */
 }
 
-/* 头部样式 */
+/* 頂部樣式 */
 header {
   background: transparent;
   color: var(--text-color);
@@ -47,9 +47,9 @@ header p {
   margin: 5px 0 0 0;
 }
 
-/* 导航栏样式 */
+/* 導覽列樣式 */
 nav {
-  background: transparent; /* 导航栏背景透明 */
+  background: transparent; /* 導覽列背景透明 */
   padding: 10px 20px;
 }
 
@@ -68,19 +68,19 @@ nav ul li {
 nav ul li a {
   display: block;
   padding: 10px 15px;
-  background: var(--button-bg-color); /* 默认按钮背景 */
+  background: var(--button-bg-color); /* 預設按鈕背景 */
   color: var(--text-color);
   text-decoration: none;
   border-radius: 5px;
-  transition: background 0.3s ease, transform 0.3s ease; /* 添加过渡效果 */
+  transition: background 0.3s ease, transform 0.3s ease; /* 添加過渡效果 */
 }
 
 nav ul li a:hover {
-  background: var(--button-hover-bg-color); /* 鼠标悬停变色 */
-  transform: scale(1.05); /* 鼠标悬停时稍微放大 */
+  background: var(--button-hover-bg-color); /* 滑鼠懸停變色 */
+  transform: scale(1.05); /* 滑鼠懸停時稍微放大 */
 }
 
-/* 主内容样式 */
+/* 主要內容樣式 */
 main {
   padding: 20px;
   margin: 20px auto;
@@ -97,7 +97,7 @@ section h2 {
   padding-bottom: 5px;
 }
 
-/* 页脚样式 */
+/* 頁腳樣式 */
 footer {
   background: var(--main-bg-color);
   color: var(--text-color);
@@ -105,7 +105,7 @@ footer {
   padding: 10px 20px;
 }
 
-/* 锚点样式 */
+/* 錨點樣式 */
 a.anchor {
   display: block;
   position: relative;
@@ -113,7 +113,7 @@ a.anchor {
   visibility: hidden;
 }
 
-/* 响应式设计 */
+/* 響應式設計 */
 @media (max-width: 768px) {
   nav ul li {
     display: block;
